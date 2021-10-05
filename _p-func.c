@@ -10,14 +10,16 @@ char *_strings(va_list arr, int x)
 
 	while (wrdd[len] != 0)
 		len++;
-	wrd = malloc(len);
+	wrd = malloc(len +1);
 	len = 0;
 
-	while(wrdd[len] != 0)
+	while (wrdd[len] != 0)
 	{
 		wrd[len] = wrdd[len];
 		len++;
 	}
+	wrd[len] = 0;
+
 	return (wrd);
 }
 
@@ -27,25 +29,33 @@ char *_char(va_list arr, int x)
 	int c;
 
 	if (x == 99 && m != 0)
+	{
 		c = va_arg(arr, int);
-	*m = c;
-	*(m + 1) = 0;
+		*m = c;
+		*(m + 1) = 0;
+	}
+	else if (x == 37 && m != 0)
+	{
+		*m = 37;
+		m[1] = 0;
+	}
+
 	return (m);
 }
 
 char *_int_s(va_list arr, int f)
 {
-	int i = va_arg(arr, int), x, len = _int_len(i), i_sqrd = _int_sqr(10, len), cnt = 0;
+	int i = va_arg(arr, int), x, ln = i_len(i), sqr = i_sqr(10, ln), cnt = 0;
 	char *m;
 
 	if (i >= 0)
-		m = malloc(len + 1);
+		m = malloc(ln + 1);
 	else
-		m = malloc(len + 2);
+		m = malloc(ln + 2);
 
 	if (m != 0 && (f == 100 || f == 105))
 	{
-		if((i < 10) && (i >= 0))
+		if ((i < 10) && (i >= 0))
 		{
 			*m = (i + 48);
 			cnt = 1;
@@ -62,22 +72,22 @@ char *_int_s(va_list arr, int f)
 			{
 				m[cnt++] = 45;
 				i *= (-1);
-				while(len != 0)
+				while(ln != 0)
 				{
-					x = (i % i_sqrd) / (i_sqrd / 10);
+					x = (i % sqr) / (sqr / 10);
 					m[cnt++] = (x + 48);
-					i_sqrd = i_sqrd / 10;
-					len--;
+					sqr = sqr / 10;
+					ln--;
 				}
 			}
 			else
 			{
-				while(len != 0)
+				while(ln != 0)
 				{
-					x = (i % i_sqrd) / (i_sqrd / 10);
+					x = (i % sqr) / (sqr / 10);
 					m[cnt++] = (x + 48);
-					i_sqrd = i_sqrd / 10;
-					len--;
+					sqr = sqr / 10;
+					ln--;
 				}
 			}
 		}
@@ -85,7 +95,7 @@ char *_int_s(va_list arr, int f)
 	}
 	return (m);
 }
-int _int_len(int i)
+int i_len(int i)
 {
 	int cnt = 0;
 	
@@ -100,7 +110,7 @@ int _int_len(int i)
 	return (cnt);
 }
 
-int _int_sqr(int x, int y)
+int i_sqr(int x, int y)
 {
 	if(x == 0)
 		return (0);
@@ -111,7 +121,7 @@ int _int_sqr(int x, int y)
 	if(y == 1)
 		return (x);
 
-	return (x * _int_sqr(x, ( y = y - 1)));
+	return (x * i_sqr(x, ( y = y - 1)));
 }
 
 int _putch(int x)

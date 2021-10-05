@@ -13,8 +13,8 @@ int _printf(const char *format, ...);
 char *_strings(va_list, int);
 char *_char(va_list, int);
 char *_int_s(va_list, int);
-int _int_sqr(int, int);
-int _int_len(int);
+int i_sqr(int, int);
+int i_len(int);
 int _putch(int);
 int _putwrd(char *);
 
