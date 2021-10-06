@@ -44,6 +44,5 @@ int _printf(char const *format, ...)
 			format++;
 		}
 	}
-
 	return (cnt);
 }

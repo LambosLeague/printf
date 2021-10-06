@@ -10,7 +10,7 @@ char *_strings(va_list arr, int x)
 
 	while (wrdd[len] != 0)
 		len++;
-	wrd = malloc(len +1);
+	wrd = malloc(len + 1);
 	len = 0;
 
 	while (wrdd[len] != 0)
@@ -45,7 +45,8 @@ char *_char(va_list arr, int x)
 
 char *_int_s(va_list arr, int f)
 {
-	int i = va_arg(arr, int), x, ln = i_len(i), sqr = i_sqr(10, ln), cnt = 0;
+	int i = va_arg(arr, int), x, ln = i_len(i), cnt = 0;
+	long int sqr = i_sqr(10, ln);
 	char *m;
 
 	if (i >= 0)
@@ -56,26 +57,21 @@ char *_int_s(va_list arr, int f)
 	if (m != 0 && (f == 100 || f == 105))
 	{
 		if ((i < 10) && (i >= 0))
-		{
-			*m = (i + 48);
-			cnt = 1;
-		}
+			*m[cnt++] = (i + 48);
 		else
 		{
 			if ((i < 0) && (i > -10))
 			{
 				m[cnt++] = 45;
-				i *= (-1);
-				m[cnt++] = (i + 48);
+				m[cnt++] = ((i * (-1)) + 48);
 			}
 			else if (i <= -10)
 			{
 				m[cnt++] = 45;
-				i *= (-1);
 				while(ln != 0)
 				{
 					x = (i % sqr) / (sqr / 10);
-					m[cnt++] = (x + 48);
+					m[cnt++] = ((x * (-1)) + 48);
 					sqr = sqr / 10;
 					ln--;
 				}
@@ -109,8 +105,7 @@ int i_len(int i)
 	}
 	return (cnt);
 }
-
-int i_sqr(int x, int y)
+long int i_sqr(int x, int y)
 {
 	if(x == 0)
 		return (0);
