@@ -57,7 +57,7 @@ char *_int_s(va_list arr, int f)
 	if (m != 0 && (f == 100 || f == 105))
 	{
 		if ((i < 10) && (i >= 0))
-			*m[cnt++] = (i + 48);
+			m[cnt++] = (i + 48);
 		else
 		{
 			if ((i < 0) && (i > -10))
