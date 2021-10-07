@@ -14,7 +14,10 @@ char *_strings(va_list arr, int x)
 		wrd = malloc(6);
 
 		while (wrdd[len] != 0 && len < 6)
-			wrd[len++] = wrdd[len];
+		{
+			wrd[len] = wrdd[len];
+			len++;
+		}
 		wrd[len] = 0;
 
 		return (wrd);
@@ -26,7 +29,10 @@ char *_strings(va_list arr, int x)
 	len = 0;
 
 	while (wrdd[len] != 0)
-		wrd[len++] = wrdd[len];
+	{
+		wrd[len] = wrdd[len];
+		len++;
+	}
 	wrd[len] = 0;
 
 	return (wrd);
