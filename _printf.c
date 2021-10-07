@@ -27,6 +27,8 @@ again:
 			cnt += _putch(*format);
 			format++;
 		}
+		else if (*format == '%' && (*(format + 1) == 0))
+			 format++;
 		else if (*format == '%' && *format != 0)
 		{
 			while (i < len)

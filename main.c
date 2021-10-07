@@ -10,7 +10,13 @@ int main(void)
 {
 	int len = 6, ct = 890;
 
+	_printf("css%ccs%scscscs", 'T', "Test");
+	_printf(NULL);
+	_printf("%");
+	_printf("%c", '\0');
+	_printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99", " Please wait", '\n');
 	_printf("%c%c\n", 'u', '#');
+	_printf("%");
 	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
 	_printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
 	_printf("%!\n");

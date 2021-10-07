@@ -47,7 +47,12 @@ char *_char(va_list arr, int x)
 	{
 		c = va_arg(arr, int);
 		if (c == 0)
+		{
+			_putch(0);
+			_putch(10);
+
 			return (0);
+		}
 		*m = c;
 		*(m + 1) = 0;
 	}
