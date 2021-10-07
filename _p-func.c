@@ -9,18 +9,24 @@ char *_strings(va_list arr, int x)
 		wrdd = va_arg(arr, char *);
 
 	if (!wrdd)
-		return (0);
+	{
+		wrdd = "(null)";
+		wrd = malloc(6);
 
-	while (wrdd[len] != 0)
-		len++;
+		while (wrdd[len] != 0 && len < 6)
+			wrd[len++] = wrdd[len];
+		wrd[len] = 0;
+
+		return (wrd);
+	}
+
+	while (wrdd[len++] != 0);
+
 	wrd = malloc(len + 1);
 	len = 0;
 
 	while (wrdd[len] != 0)
-	{
-		wrd[len] = wrdd[len];
-		len++;
-	}
+		wrd[len++] = wrdd[len];
 	wrd[len] = 0;
 
 	return (wrd);
