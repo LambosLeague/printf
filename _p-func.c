@@ -11,9 +11,9 @@ char *_strings(va_list arr, int x)
 	if (!wrdd)
 	{
 		wrdd = "(null)";
-		wrd = malloc(6);
+		wrd = malloc(7);
 
-		while (wrdd[len] != 0 && len < 6)
+		while (wrdd[len] != 0 && len < 7)
 		{
 			wrd[len] = wrdd[len];
 			len++;
@@ -50,8 +50,9 @@ char *_char(va_list arr, int x)
 		{
 			_putch(0);
 			_putch(10);
+			free(m);
 
-			return (0);
+			return (0);	
 		}
 		*m = c;
 		*(m + 1) = 0;
