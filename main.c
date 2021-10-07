@@ -10,6 +10,11 @@ int main(void)
 {
 	int len = 6, ct = 890;
 
+	_printf("%c%c\n", 'u', '#');
+	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	_printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
+	_printf("%!\n");
+	_printf("%K\n");
 	_printf("iddi%diddiiddi\n", 1024);
 	_printf("%d\n", 214748364);
 	_printf("%d\n", INT_MIN);

@@ -8,6 +8,9 @@ char *_strings(va_list arr, int x)
 	if (x == 115)
 		wrdd = va_arg(arr, char *);
 
+	if (!wrdd)
+		return (0);
+
 	while (wrdd[len] != 0)
 		len++;
 	wrd = malloc(len + 1);
@@ -31,6 +34,8 @@ char *_char(va_list arr, int x)
 	if (x == 99 && m != 0)
 	{
 		c = va_arg(arr, int);
+		if (c == 0)
+			return (0);
 		*m = c;
 		*(m + 1) = 0;
 	}
