@@ -8,11 +8,11 @@ int _printf(char const *format, ...)
 	size_t size = 0;
 
 	convert conv_f[] = {
+		{'i', _int_s},
 		{'c', _char},
 		{'%', _char},
 		{'s', _strings},
-		{'d', _int_s},
-		{'i', _int_s}
+		{'d', _int_s}
 	};
 	size = sizeof(conv_f) /sizeof(conv_f[0]);
 	len = (int)size;
@@ -27,9 +27,10 @@ int _printf(char const *format, ...)
 		}
 		else if (*format == '%' && *format != 0)
 		{
+			format++;
 			while (i < len)
 			{
-				if (*(format + 1) == conv_f[i].x)
+				if (*(format) == conv_f[i].x)
 				{
 					wrd = conv_f[i].func(arr, conv_f[i].x);
 					format++;
@@ -41,7 +42,6 @@ int _printf(char const *format, ...)
 					i++;
 			}
 			i = 0;
-			format++;
 		}
 	}
 	return (cnt);

@@ -9,6 +9,8 @@
 int main(void)
 {
 	int len = 6, ct = 890;
+
+	_printf("iddi%diddiiddi\n", 1024);
 	_printf("%d\n", 214748364);
 	_printf("%d\n", INT_MIN);
 	_printf("%d\n", len);
